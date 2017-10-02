@@ -1,0 +1,40 @@
+{
+  "env": {
+    "REDMINE_IMAGE": "redmine",
+    "REDMINE_DEPLOY_NAME": "solution-redmine",
+    "REDMINE_SVC_NAME": "solution-redmine-svc",
+    "PG_IMAGE": "postgres",
+    "PG_PORT": "5432",
+    "REDMINE_PORT": "3000",
+    "PG_DEPLOY_NAME": "solution-pg",
+    "PG_SVC_NAME": "solution-pg-svc",
+    "POSTGRES_USER": "postgres",
+    "PGDATA": "/pgdata",
+    "REDMINEPATH": "/usr/src/redmine/files"
+  },
+  "compile":{
+     "PG_DEPLOY_HASH": "$RANDOM_5$",
+     "PG_SVC_HASH": "$RANDOM_5$",
+     "REDMINE_DEPLOY_HASH": "$RANDOM_5$",
+     "POSTGRES_PASSWORD": "$RANDOM_8$",
+     "REDMINE_SVC_HASH": "$RANDOM_5$"
+  },
+  "run":[
+    {
+      "type": "deployment",
+      "config_file": "deploy-pg.json"
+    },
+    {
+      "type": "service",
+      "config_file": "service-pg.json"
+    },
+    {
+      "type": "deployment",
+      "config_file": "deploy-redmine.json"
+    },
+    {
+      "type": "service",
+      "config_file": "service-redmine.json"
+    }
+  ]
+}

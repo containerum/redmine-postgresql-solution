@@ -1,1 +1,1 @@
-# solution-postgresql
+# redmine-postgresql solution
