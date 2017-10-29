@@ -1,16 +1,16 @@
 {
   "kind": "Deployment",
   "metadata": {
-    "name": "${PG_DEPLOY_NAME}-${PG_DEPLOY_HASH}"
+    "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
   },
   "spec": {
     "replicas": 1,
     "template": {
       "metadata": {
         "labels": {
-          "app": "${PG_IMAGE}"
+          "app": "{{.PG_IMAGE}}"
         },
-        "name": "${PG_DEPLOY_NAME}-${PG_DEPLOY_HASH}"
+        "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
       },
       "spec": {
         "containers": [
@@ -18,23 +18,23 @@
             "env": [
               {
                 "name": "POSTGRES_USER",
-                "value": "${POSTGRES_USER}"
+                "value": "{{.POSTGRES_USER}}"
               },
               {
                 "name": "POSTGRES_PASSWORD",
-                "value": "${POSTGRES_PASSWORD}"
+                "value": "{{.POSTGRES_PASSWORD}}"
               },
               {
                 "name": "PGDATA",
-                "value": "${PGDATA}"
+                "value": "{{.PGDATA}}"
               },
               {
                 "name": "SVC_NAME",
-                "value": "${PG_SVC_NAME}-${PG_SVC_HASH}" 
+                "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}" 
               }
            ],
-            "image": "${PG_IMAGE}",
-            "name": "${PG_DEPLOY_NAME}",
+            "image": "{{.PG_IMAGE}}",
+            "name": "{{.PG_DEPLOY_NAME}}",
             "resources": {
               "requests": {
                 "cpu": "100m",
@@ -43,9 +43,9 @@
             },
             "volumeMounts": [
               {
-                "mountPath": "${PGDATA}",
+                "mountPath": "{{.PGDATA}}",
                 "name": "default-volume",
-                "subPath": "${PG_DEPLOY_NAME}-${PG_DEPLOY_HASH}${PGDATA}"
+                "subPath": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}{{.PGDATA}}"
               }
             ]
           }

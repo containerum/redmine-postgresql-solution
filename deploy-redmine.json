@@ -1,16 +1,16 @@
 {
   "kind": "Deployment",
   "metadata": {
-    "name": "${REDMINE_DEPLOY_NAME}-${REDMINE_DEPLOY_HASH}"
+    "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}"
   },
   "spec": {
     "replicas": 1,
     "template": {
       "metadata": {
         "labels": {
-          "app": "${REDMINE_IMAGE}"
+          "app": "{{.REDMINE_IMAGE}}"
         },
-        "name": "${REDMINE_DEPLOY_NAME}-${REDMINE_DEPLOY_HASH}"
+        "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}"
       },
       "spec": {
         "containers": [
@@ -18,27 +18,27 @@
             "env": [
               {
                 "name": "REDMINE_DB_POSTGRES",
-                "value": "${PG_SVC_NAME}-${PG_SVC_HASH}"
+                "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
               },
               {
                 "name": "REDMINE_DB_PORT",
-                "value": "${PG_PORT}"
+                "value": "{{.PG_PORT}}"
               },
               {
                 "name": "REDMINE_DB_USERNAME",
-                "value": "${POSTGRES_USER}"
+                "value": "{{.POSTGRES_USER}}"
               },
               {
                 "name": "REDMINE_DB_PASSWORD",
-                "value": "${POSTGRES_PASSWORD}" 
+                "value": "{{.POSTGRES_PASSWORD}}" 
               },
               {
                 "name": "REDMINE_DB_DATABASE",
-                "value": "${POSTGRES_USER}" 
+                "value": "{{.POSTGRES_USER}}" 
               }
            ],
-            "image": "${REDMINE_IMAGE}",
-            "name": "${REDMINE_DEPLOY_NAME}",
+            "image": "{{.REDMINE_IMAGE}}",
+            "name": "{{.REDMINE_DEPLOY_NAME}}",
             "resources": {
               "requests": {
                 "cpu": "200m",
@@ -47,9 +47,9 @@
             },
             "volumeMounts": [
               {
-                "mountPath": "${REDMINEPATH}",
+                "mountPath": "{{.REDMINEPATH}}",
                 "name": "default-volume",
-                "subPath": "${REDMINE_DEPLOY_NAME}-${REDMINE_DEPLOY_HASH}${REDMINEPATH}"
+                "subPath": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}{{.REDMINEPATH}}"
               }
             ]
           }
