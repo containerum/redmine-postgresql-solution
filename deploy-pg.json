@@ -44,7 +44,7 @@
             "volumeMounts": [
               {
                 "mountPath": "{{.PGDATA}}",
-                "name": "default-volume",
+                "name": "{{.NS}}-volume",
                 "subPath": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}{{.PGDATA}}"
               }
             ]
@@ -52,7 +52,7 @@
         ],
         "volumes": [
           {
-            "name": "default-volume"
+            "name": "{{.NS}}-volume"
           }
         ]
       }

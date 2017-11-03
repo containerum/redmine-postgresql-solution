@@ -48,7 +48,7 @@
             "volumeMounts": [
               {
                 "mountPath": "{{.REDMINEPATH}}",
-                "name": "default-volume",
+                "name": "{{.NS}}-volume",
                 "subPath": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}{{.REDMINEPATH}}"
               }
             ]
@@ -56,7 +56,7 @@
         ],
         "volumes": [
           {
-            "name": "default-volume"
+            "name": "{{.NS}}-volume"
           }
         ]
       }
