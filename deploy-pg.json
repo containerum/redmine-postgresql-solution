@@ -1,6 +1,10 @@
 {
   "kind": "Deployment",
   "metadata": {
+    "labels": {
+    	"app": "{{.PG_IMAGE}}",
+        "owner": "{{.OWNER}}"
+    },
     "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
   },
   "spec": {
