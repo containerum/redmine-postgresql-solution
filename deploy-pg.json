@@ -8,6 +8,12 @@
     "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
   },
   "spec": {
+    "selector": {
+    	"matchLabels": {
+        	"app": "{{.PG_IMAGE}}",
+       		 "owner": "{{.OWNER}}"
+    	}
+    },
     "replicas": 1,
     "template": {
       "metadata": {

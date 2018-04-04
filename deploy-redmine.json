@@ -8,6 +8,12 @@
     "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}"
   },
   "spec": {
+    "selector": {
+    	"matchLabels": {
+        	"app": "{{.REDMINE_IMAGE}}",
+       		 "owner": "{{.OWNER}}"
+    	}
+    },
     "replicas": 1,
     "template": {
       "metadata": {
