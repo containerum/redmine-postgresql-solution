@@ -8,7 +8,8 @@
     "template": {
       "metadata": {
         "labels": {
-          "app": "{{.PG_IMAGE}}"
+          "app": "{{.PG_IMAGE}}",
+          "owner": "{{.OWNER}}"
         },
         "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
       },
@@ -36,7 +37,7 @@
             "image": "{{.PG_IMAGE}}",
             "name": "{{.PG_DEPLOY_NAME}}",
             "resources": {
-              "requests": {
+              "limits": {
                 "cpu": "100m",
                 "memory": "100Mi"
               }

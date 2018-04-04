@@ -2,15 +2,11 @@
     "kind": "Service",
     "metadata": {
         "labels": {
-            "external": "false",
-            "{{.NS_SELECTOR}}": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
+            "owner": "{{.OWNER}}"
         },
         "name": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
     },
     "spec": {
-        "selector": {
-            "{{.NS_SELECTOR}}": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
-        },
         "ports": [
             {
                 "protocol": "TCP",

@@ -8,7 +8,8 @@
     "template": {
       "metadata": {
         "labels": {
-          "app": "{{.REDMINE_IMAGE}}"
+          "app": "{{.REDMINE_IMAGE}}",
+          "owner": "{{.OWNER}}"
         },
         "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}"
       },
@@ -40,7 +41,7 @@
             "image": "{{.REDMINE_IMAGE}}",
             "name": "{{.REDMINE_DEPLOY_NAME}}",
             "resources": {
-              "requests": {
+              "limits": {
                 "cpu": "200m",
                 "memory": "156Mi"
               }
