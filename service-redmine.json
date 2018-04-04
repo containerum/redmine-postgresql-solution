@@ -10,7 +10,8 @@
         "ports": [
             {
                 "protocol": "TCP",
-                "targetPort": {{.REDMINE_PORT}}
+                "targetPort": {{.REDMINE_PORT}},
+                "name": "redmine"
             }
         ]
     }
