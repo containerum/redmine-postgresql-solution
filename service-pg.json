@@ -2,6 +2,7 @@
     "kind": "Service",
     "metadata": {
         "labels": {
+            "app": "{{.REDMINE_IMAGE}}",
             "owner": "{{.OWNER}}"
         },
         "name": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
