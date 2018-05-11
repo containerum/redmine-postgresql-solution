@@ -1,61 +1,29 @@
 {
-  "kind": "Deployment",
-  "metadata": {
-    "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
-  },
-  "spec": {
-    "replicas": 1,
-    "template": {
-      "metadata": {
-        "labels": {
-          "app": "{{.PG_IMAGE}}"
-        },
-        "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
+  "containers": [{
+    "image": "{{.PG_IMAGE}}",
+    "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+    "limits": {
+      "cpu": 100,
+      "memory": 100
+    },
+    "env": [{
+      "name": "POSTGRES_USER",
+      "value": "{{.POSTGRES_USER}}"
+    },
+      {
+        "name": "POSTGRES_PASSWORD",
+        "value": "{{.POSTGRES_PASSWORD}}"
       },
-      "spec": {
-        "containers": [
-          {
-            "env": [
-              {
-                "name": "POSTGRES_USER",
-                "value": "{{.POSTGRES_USER}}"
-              },
-              {
-                "name": "POSTGRES_PASSWORD",
-                "value": "{{.POSTGRES_PASSWORD}}"
-              },
-              {
-                "name": "PGDATA",
-                "value": "{{.PGDATA}}"
-              },
-              {
-                "name": "SVC_NAME",
-                "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}" 
-              }
-           ],
-            "image": "{{.PG_IMAGE}}",
-            "name": "{{.PG_DEPLOY_NAME}}",
-            "resources": {
-              "requests": {
-                "cpu": "100m",
-                "memory": "100Mi"
-              }
-            },
-            "volumeMounts": [
-              {
-                "mountPath": "{{.PGDATA}}",
-                "name": "{{.VOLUME}}",
-                "subPath": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}{{.PGDATA}}"
-              }
-            ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "{{.VOLUME}}"
-          }
-        ]
+      {
+        "name": "PGDATA",
+        "value": "{{.PGDATA}}"
+      },
+      {
+        "name": "SVC_NAME",
+        "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
       }
-    }
-  }
+    ]
+  }],
+  "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+  "replicas": 1
 }
