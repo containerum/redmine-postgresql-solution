@@ -6,6 +6,5 @@
         "port": {{.PG_PORT}},
         "target_port": {{.PG_PORT}},
         "protocol": "TCP"
-        }],
-    "owner": "{{.OWNER}}"
+        }]
 }

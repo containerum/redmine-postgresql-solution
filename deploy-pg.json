@@ -25,6 +25,5 @@
     ]
   }],
   "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
-  "replicas": 1,
-  "owner": "{{.OWNER}}"
+  "replicas": 1
 }

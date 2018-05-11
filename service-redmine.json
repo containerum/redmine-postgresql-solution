@@ -6,6 +6,5 @@
         "port": {{.REDMINE_PORT}},
         "target_port": {{.REDMINE_PORT}},
         "protocol": "TCP"
-        }],
-    "owner": "{{.OWNER}}"
+        }]
 }

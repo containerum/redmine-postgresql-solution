@@ -29,6 +29,5 @@
     ]
   }],
   "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
-  "replicas": 1,
-  "owner": "{{.OWNER}}"
+  "replicas": 1
 }
