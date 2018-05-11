@@ -1,72 +1,30 @@
 {
-  "kind": "Deployment",
-  "metadata": {
-    "labels": {
-    	"app": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
-        "owner": "{{.OWNER}}"
+  "containers": [{
+    "image": "{{.PG_IMAGE}}",
+    "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+    "limits": {
+      "cpu": 100,
+      "memory": 100
     },
-    "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
-  },
-  "spec": {
-    "selector": {
-    	"matchLabels": {
-        	"app": "{{.PG_IMAGE}}",
-       		 "owner": "{{.OWNER}}"
-    	}
+    "env": [{
+      "name": "POSTGRES_USER",
+      "value": "{{.POSTGRES_USER}}"
     },
-    "replicas": 1,
-    "template": {
-      "metadata": {
-        "labels": {
-          "app": "{{.PG_IMAGE}}",
-          "owner": "{{.OWNER}}"
-        },
-        "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}"
+      {
+        "name": "POSTGRES_PASSWORD",
+        "value": "{{.POSTGRES_PASSWORD}}"
       },
-      "spec": {
-        "containers": [
-          {
-            "env": [
-              {
-                "name": "POSTGRES_USER",
-                "value": "{{.POSTGRES_USER}}"
-              },
-              {
-                "name": "POSTGRES_PASSWORD",
-                "value": "{{.POSTGRES_PASSWORD}}"
-              },
-              {
-                "name": "PGDATA",
-                "value": "{{.PGDATA}}"
-              },
-              {
-                "name": "SVC_NAME",
-                "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}" 
-              }
-           ],
-            "image": "{{.PG_IMAGE}}",
-            "name": "{{.PG_DEPLOY_NAME}}",
-            "resources": {
-              "limits": {
-                "cpu": "100m",
-                "memory": "100Mi"
-              }
-            },
-            "volumeMounts": [
-              {
-                "mountPath": "{{.PGDATA}}",
-                "name": "{{.VOLUME}}",
-                "subPath": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}{{.PGDATA}}"
-              }
-            ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "{{.VOLUME}}"
-          }
-        ]
+      {
+        "name": "PGDATA",
+        "value": "{{.PGDATA}}"
+      },
+      {
+        "name": "SVC_NAME",
+        "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
       }
-    }
-  }
+    ]
+  }],
+  "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+  "replicas": 1,
+  "owner": "{{.OWNER}}"
 }

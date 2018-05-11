@@ -1,20 +1,11 @@
 {
-    "kind": "Service",
-    "metadata": {
-        "labels": {
-            "app": "{{.REDMINE_IMAGE}}",
-            "owner": "{{.OWNER}}"
-        },
-        "name": "{{.REDMINE_SVC_NAME}}-{{.REDMINE_SVC_HASH}}"
-    },
-    "spec": {
-        "ports": [
-            {
-                "protocol": "TCP",
-                "targetPort": {{.REDMINE_PORT}},
-                "port": {{.REDMINE_PORT}},
-                "name": "redmine"
-            }
-        ]
-    }
+    "name": "{{.REDMINE_SVC_NAME}}-{{.REDMINE_SVC_HASH}}",
+    "deploy": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
+    "ports": [{
+        "name": "redmine",
+        "port": {{.REDMINE_PORT}},
+        "target_port": {{.REDMINE_PORT}},
+        "protocol": "TCP"
+        }],
+    "owner": "{{.OWNER}}"
 }

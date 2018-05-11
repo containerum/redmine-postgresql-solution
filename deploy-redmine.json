@@ -1,76 +1,34 @@
 {
-  "kind": "Deployment",
-  "metadata": {
-    "labels": {
-        "app": "{{.REDMINE_IMAGE}}",
-        "owner": "{{.OWNER}}"
+  "containers": [{
+    "image": "{{.REDMINE_IMAGE}}",
+    "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
+    "limits": {
+      "cpu": 200,
+      "memory": 156
     },
-    "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}"
-  },
-  "spec": {
-    "selector": {
-    	"matchLabels": {
-        	"app": "{{.REDMINE_IMAGE}}",
-       		 "owner": "{{.OWNER}}"
-    	}
+    "env": [{
+      "name": "REDMINE_DB_POSTGRES",
+      "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
     },
-    "replicas": 1,
-    "template": {
-      "metadata": {
-        "labels": {
-          "app": "{{.REDMINE_IMAGE}}",
-          "owner": "{{.OWNER}}"
-        },
-        "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}"
+      {
+        "name": "REDMINE_DB_PORT",
+        "value": "{{.PG_PORT}}"
       },
-      "spec": {
-        "containers": [
-          {
-            "env": [
-              {
-                "name": "REDMINE_DB_POSTGRES",
-                "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
-              },
-              {
-                "name": "REDMINE_DB_PORT",
-                "value": "{{.PG_PORT}}"
-              },
-              {
-                "name": "REDMINE_DB_USERNAME",
-                "value": "{{.POSTGRES_USER}}"
-              },
-              {
-                "name": "REDMINE_DB_PASSWORD",
-                "value": "{{.POSTGRES_PASSWORD}}" 
-              },
-              {
-                "name": "REDMINE_DB_DATABASE",
-                "value": "{{.POSTGRES_USER}}" 
-              }
-           ],
-            "image": "{{.REDMINE_IMAGE}}",
-            "name": "{{.REDMINE_DEPLOY_NAME}}",
-            "resources": {
-              "limits": {
-                "cpu": "200m",
-                "memory": "156Mi"
-              }
-            },
-            "volumeMounts": [
-              {
-                "mountPath": "{{.REDMINEPATH}}",
-                "name": "{{.VOLUME}}",
-                "subPath": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}{{.REDMINEPATH}}"
-              }
-            ]
-          }
-        ],
-        "volumes": [
-          {
-            "name": "{{.VOLUME}}"
-          }
-        ]
+      {
+        "name": "REDMINE_DB_USERNAME",
+        "value": "{{.POSTGRES_USER}}"
+      },
+      {
+        "name": "REDMINE_DB_PASSWORD",
+        "value": "{{.POSTGRES_PASSWORD}}"
+      },
+      {
+        "name": "REDMINE_DB_DATABASE",
+        "value": "{{.POSTGRES_USER}}"
       }
-    }
-  }
+    ]
+  }],
+  "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
+  "replicas": 1,
+  "owner": "{{.OWNER}}"
 }
