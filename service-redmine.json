@@ -3,7 +3,6 @@
     "deploy": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
     "ports": [{
         "name": "redmine",
-        "port": {{.REDMINE_PORT}},
         "target_port": {{.REDMINE_PORT}},
         "protocol": "TCP"
         }]
