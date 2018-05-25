@@ -16,10 +16,10 @@
     "REDMINE_DEPLOY_HASH": "{{rand_string 5}}",
     "POSTGRES_PASSWORD": "{{rand_string 8}}",
     "REDMINE_SVC_HASH": "{{rand_string 5}}",
-    "REDMINE_CPU": "250",
-    "REDMINE_RAM": "256",
-    "PG_CPU": "250",
-    "PG_RAM": "256",
+    "REDMINE_CPU": "200",
+    "REDMINE_RAM": "156",
+    "PG_CPU": "100",
+    "PG_RAM": "100",
  },
  "run":[
     {
