@@ -3,8 +3,8 @@
     "image": "{{.REDMINE_IMAGE}}",
     "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
     "limits": {
-      "cpu": 200,
-      "memory": 156
+      "cpu": {{.REDMINE_CPU}},
+      "memory": {{.REDMINE_RAM}}
     },
     "env": [{
       "name": "REDMINE_DB_POSTGRES",

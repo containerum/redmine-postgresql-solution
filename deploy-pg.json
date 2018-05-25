@@ -3,8 +3,8 @@
     "image": "{{.PG_IMAGE}}",
     "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
     "limits": {
-      "cpu": 100,
-      "memory": 100
+      "cpu": {{.PG_CPU}},
+      "memory": {{.PG_RAM}}
     },
     "env": [{
       "name": "POSTGRES_USER",
