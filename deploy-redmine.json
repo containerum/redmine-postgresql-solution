@@ -1,14 +1,14 @@
 {
   "containers": [{
     "image": "{{.REDMINE_IMAGE}}",
-    "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
+    "name": "{{.REDMINE_DEPLOY_NAME}}{{.REDMINE_DEPLOY_HASH}}",
     "limits": {
       "cpu": {{.REDMINE_CPU}},
       "memory": {{.REDMINE_RAM}}
     },
     "env": [{
       "name": "REDMINE_DB_POSTGRES",
-      "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
+      "value": "{{.PG_SVC_NAME}}{{.PG_SVC_HASH}}"
     },
       {
         "name": "REDMINE_DB_PORT",
@@ -28,6 +28,6 @@
       }
     ]
   }],
-  "name": "{{.REDMINE_DEPLOY_NAME}}-{{.REDMINE_DEPLOY_HASH}}",
+  "name": "{{.REDMINE_DEPLOY_NAME}}{{.REDMINE_DEPLOY_HASH}}",
   "replicas": 1
 }
