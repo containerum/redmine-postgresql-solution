@@ -19,7 +19,7 @@
     "REDMINE_CPU": "200",
     "REDMINE_RAM": "156",
     "PG_CPU": "100",
-    "PG_RAM": "100",
+    "PG_RAM": "100"
  },
  "run":[
     {
