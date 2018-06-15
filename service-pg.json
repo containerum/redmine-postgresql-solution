@@ -1,6 +1,6 @@
 {
-    "name": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}",
-    "deploy": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+    "name": "{{.PG_SVC_NAME}}{{.PG_SVC_HASH}}",
+    "deploy": "{{.PG_DEPLOY_NAME}}{{.PG_DEPLOY_HASH}}",
     "ports": [{
         "name": "pg",
         "port": {{.PG_PORT}},

@@ -1,10 +1,10 @@
 {
   "containers": [{
     "image": "{{.PG_IMAGE}}",
-    "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+    "name": "{{.PG_DEPLOY_NAME}}{{.PG_DEPLOY_HASH}}",
     "limits": {
-      "cpu": 100,
-      "memory": 100
+      "cpu": {{.PG_CPU}},
+      "memory": {{.PG_RAM}}
     },
     "env": [{
       "name": "POSTGRES_USER",
@@ -20,10 +20,10 @@
       },
       {
         "name": "SVC_NAME",
-        "value": "{{.PG_SVC_NAME}}-{{.PG_SVC_HASH}}"
+        "value": "{{.PG_SVC_NAME}}{{.PG_SVC_HASH}}"
       }
     ]
   }],
-  "name": "{{.PG_DEPLOY_NAME}}-{{.PG_DEPLOY_HASH}}",
+  "name": "{{.PG_DEPLOY_NAME}}{{.PG_DEPLOY_HASH}}",
   "replicas": 1
 }
