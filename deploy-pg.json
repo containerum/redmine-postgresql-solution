@@ -1,7 +1,7 @@
 {
   "containers": [{
     "image": "{{.PG_IMAGE}}",
-    "name": "{{.PG_DEPLOY_NAME}}{{.PG_DEPLOY_HASH}}",
+    "name": "{{.PG_DEPLOY_NAME}}{{.HASH}}",
     "limits": {
       "cpu": {{.PG_CPU}},
       "memory": {{.PG_RAM}}
@@ -20,10 +20,10 @@
       },
       {
         "name": "SVC_NAME",
-        "value": "{{.PG_SVC_NAME}}{{.PG_SVC_HASH}}"
+        "value": "{{.PG_SVC_NAME}}{{.HASH}}"
       }
     ]
   }],
-  "name": "{{.PG_DEPLOY_NAME}}{{.PG_DEPLOY_HASH}}",
+  "name": "{{.PG_DEPLOY_NAME}}{{.HASH}}",
   "replicas": 1
 }

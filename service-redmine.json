@@ -1,6 +1,6 @@
 {
-    "name": "{{.REDMINE_SVC_NAME}}{{.REDMINE_SVC_HASH}}",
-    "deploy": "{{.REDMINE_DEPLOY_NAME}}{{.REDMINE_DEPLOY_HASH}}",
+    "name": "{{.REDMINE_SVC_NAME}}{{.HASH}}",
+    "deploy": "{{.REDMINE_DEPLOY_NAME}}{{.HASH}}",
     "ports": [{
         "name": "redmine",
         "target_port": {{.REDMINE_PORT}},
