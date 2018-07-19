@@ -13,10 +13,10 @@
     "REDMINEPATH": "/usr/src/redmine/files",
     "HASH": "{{rand_string_minus 5}}",
     "POSTGRES_PASSWORD": "{{rand_string 8}}",
-    "REDMINE_CPU": "200",
-    "REDMINE_RAM": "156",
+    "REDMINE_CPU": "100",
+    "REDMINE_RAM": "128",
     "PG_CPU": "100",
-    "PG_RAM": "100"
+    "PG_RAM": "128"
  },
  "run":[
     {
